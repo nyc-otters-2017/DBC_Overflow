@@ -1,0 +1,10 @@
+<div class="container">
+  <label for="">Question: <h1><%= @question.title %></h1></label>
+  <label for="">Question detail:<p><%= @question.body_question %> </p></label>
+</div>
+
+<div class="container">
+  <% @question.answers.each do |question| %>
+  <label for="">Answer: </label><h4> <%= question.body_answer %></h4><br>
+  <% end %>
+</div>

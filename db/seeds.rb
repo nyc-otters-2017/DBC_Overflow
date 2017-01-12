@@ -14,6 +14,9 @@ def fake_vote
   [1,-1].sample
 end
 
+def smart_answer
+  Faker::Hacker.say_something_smart
+end
 # Remove all from the database
 User.delete_all
 Vote.delete_all
@@ -21,34 +24,54 @@ Answer.delete_all
 Question.delete_all
 Comment.delete_all
 
-
   user1 =  User.create!({
     :username      => fake_name,
     :email  => fake_email,
     :password => "dhrdfhbfdhbfdhb"
   })
 
-  30.times do
-    Question.create!(user_id: rand((User.all.size + 1)), title: "#{Faker::ChuckNorris.fact}", body_question: Faker::Hacker.say_something_smart, total_votes: rand(20))
+  10.times do
+    User.create!(
+      username: fake_name,
+      email:    fake_email,
+      password: 'password'
+      )
   end
 
-  question1 = Question.create!(user_id: user1.id, title: "hello Jeremy", body_question: 'My name is Jeremy, and I am better than Kevin', total_votes:100)
-  question2 = Question.create!(user_id: user1.id , title: "I am the king of the world!", body_question: 'My name is Jeremy, and I am better than Kevin', total_votes:9000)
+  30.times do
+    User.all.sample.questions.create!(
+      title: "#{Faker::ChuckNorris.fact}",
+      body_question: "Why is/does #{Faker::ChuckNorris.fact} a true fact?",
+      total_votes: 0
+      )
+  end
 
-  answer1 = Answer.create!(user_id: user1.id, body_answer: "hello Jeremy this is answer", total_votes: 100, question_id:question1.id)
-  Answer.create!(user_id: user1.id, body_answer: "hello Jeremy this is answer2", total_votes: 200, question_id:question2.id)
+  30.times do
+    Question.all.sample.answers.create!(
+      body_answer: Faker::Hacker.say_something_smart, total_votes: 0
+      )
+    end
 
-  Comment.create!(user: user1, body_comment: "hello Jeremy Comment", commentable_id: question1.id, commentable_type:'Question')
-  Comment.create!(user: user1, body_comment: "hello Jeremy Comment", commentable_id: answer1.id, commentable_type:'Answer')
+  10.times do
+    Question.all.sample.comments.create!(
+    body_comment: "Jeremy was here; for question"
+    )
+  end
 
-  Vote.create!({
-    :up_or_down      => fake_vote,
-    :voteable_id     => question1.id,
-    :voteable_type   =>"Question"
-  })
+  10.times do
+    Answer.all.sample.comments.create!(
+    body_comment: "Jeremy was here; for answer"
+    )
+  end
 
-  Vote.create!({
-    :up_or_down      => fake_vote,
-    :voteable_id     => answer1.id,
-    :voteable_type   =>"Answer"
-  })
+  30.times do
+    Question.all.sample.votes.create!(
+      :up_or_down      => fake_vote
+    )
+  end
+
+  30.times do
+    Answer.all.sample.votes.create!(
+      :up_or_down      => fake_vote
+    )
+  end
