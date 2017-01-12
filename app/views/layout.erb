@@ -19,8 +19,15 @@
     <div class="nav-wrapper orange darken-2" >
       <a href="/" class="brand-logo">DBC Overflow</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if current_user %>
+        <ul>
+          <li>Hello, <%= current_user.username %></li>
+          <li><a href="/user/logout">Logout</a></li>
+        </ul>
+        <% else %>
         <li><a href="/user/login" style="color: black " >Log In</a></li>
         <li><a href="/user/new" style="color: black " >Sign Up</a></li>
+        <% end%>
       </ul>
     </div>
   </nav>
