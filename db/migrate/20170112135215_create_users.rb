@@ -9,6 +9,3 @@ class CreateUsers < ActiveRecord::Migration
     end
   end
 end
-
-
-# User.create!(username: 'test', email:'test@gmail.com', password:"password")
