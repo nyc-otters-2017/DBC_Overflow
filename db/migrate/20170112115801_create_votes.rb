@@ -4,8 +4,9 @@ class CreateVotes < ActiveRecord::Migration
       t.integer :up_or_down, null: false
       t.integer :voteable_id, null: false
       t.string :voteable_type, null: false
-      
-      t.timestamps 
+      t.references :user 
+
+      t.timestamps
     end
   end
 end
