@@ -21,11 +21,16 @@ Answer.delete_all
 Question.delete_all
 Comment.delete_all
 
-user1 =  User.create!({
+
+  user1 =  User.create!({
     :username      => fake_name,
     :email  => fake_email,
     :password => "dhrdfhbfdhbfdhb"
   })
+
+  30.times do
+    Question.create!(user_id: rand((User.all.size + 1)), title: "#{Faker::ChuckNorris.fact}", body_question: Faker::Hacker.say_something_smart, total_votes: rand(20))
+  end
 
   question1 = Question.create!(user_id: user1.id, title: "hello Jeremy", body_question: 'My name is Jeremy, and I am better than Kevin', total_votes:100)
   question2 = Question.create!(user_id: user1.id , title: "I am the king of the world!", body_question: 'My name is Jeremy, and I am better than Kevin', total_votes:9000)
