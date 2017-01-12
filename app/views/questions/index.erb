@@ -4,7 +4,9 @@
 
 
 <div class="">
-  <%@questions.each do |question| %>
-    <%= question.title %>
-  <% end %>
+  <ul>
+    <%@questions.each do |question| %>
+    <li>  <%= question.title %> </li>
+    <% end %>
+  </ul>
 </div>
