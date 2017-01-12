@@ -4,7 +4,8 @@ class CreateAnswers < ActiveRecord::Migration
       t.string :body_answer, null: false
       t.integer :total_votes, null: false
 
-      t.references :user, :question
+      t.references :user
+      t.references :question
       t.timestamps
     end
   end

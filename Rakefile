@@ -85,6 +85,20 @@ namespace :generate do
 
 end
 
+# namespace :db do
+#   desc "Create the database at #{DB_NAME}"
+#   task :restart do
+#     puts "SUPER AMAZING METHOD THAT KILLS AND RESTART"
+#     exec("dropdb #{DB_NAME}")
+#     exec("createdb #{DB_NAME}")
+#     ActiveRecord::Migrator.migrations_paths << File.dirname(__FILE__) + 'db/migrate'
+#     ActiveRecord::Migration.verbose = ENV["VERBOSE"] ? ENV["VERBOSE"] == "true" : true
+#     ActiveRecord::Migrator.migrate(ActiveRecord::Migrator.migrations_paths, ENV["VERSION"] ? ENV["VERSION"].to_i : nil) do |migration|
+#       ENV["SCOPE"].blank? || (ENV["SCOPE"] == migration.scope)
+#     end
+#   end
+# end
+
 namespace :db do
   desc "Create the database at #{DB_NAME}"
   task :create do
