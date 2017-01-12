@@ -3,6 +3,6 @@ get '/questions' do
   erb :'questions/index'
 end
 
-get '/question/new' do
-  erb :'question/new'
+get '/questions/new' do
+  erb :'questions/new'
 end
