@@ -1,27 +1,30 @@
-
 <h1>All Questions</h1>
 
 <right>
-<%@questions.each do |question| %>
-<div class="question" >
-  <div class="votes" >
-    <div class="upvote" @click="vote('up', question)">
+    <%@questions.each do |question| %>
+        <div class="question">
+            <div class="votes">
+                <div class="upvote" @click="vote('up', question)">
 
-      <form class="upvote" action="/questions/<%=question.id%>/upvote" method="post">
-        <button type="submit" name="thumbsup"><i class="tiny material-icons">thumb_up</i></button>
-        <input type="hidden" name="question_id" value="<%=question.id%>">
-      </form>
+                    <form class="upvote" action="/questions/<%=question.id%>/upvote" method="post">
+                        <button type="submit" name="thumbsup"><i class="tiny material-icons">thumb_up</i></button>
+                        <input type="hidden" name="question_id" value="<%=question.id%>">
+                    </form>
 
-    </div>
-    <div class="number-of-votes"> <%=question.get_total_votes%> </div>
-    <div class="downvote" @click="vote('down', question)">
-      <form class="downvote" action="/questions/<%=question.id%>/downvote" method="post">
-        <button type="submit" name="thumbsup"><i class="tiny material-icons">thumb_down</i></button>
-        <input type="hidden" name="question_id" value="<%=question.id%>">
-      </form>
-    </div>
-  </div>
-  <a href="/questions/<%=question.id%>"> <%= question.title %> </a>
-</div>
-<% end %>
+                </div>
+                <div class="number-of-votes">
+                    <%=question.get_total_votes%>
+                </div>
+                <div class="downvote" @click="vote('down', question)">
+                    <form class="downvote" action="/questions/<%=question.id%>/downvote" method="post">
+                        <button type="submit" name="thumbsup"><i class="tiny material-icons">thumb_down</i></button>
+                        <input type="hidden" name="question_id" value="<%=question.id%>">
+                    </form>
+                </div>
+            </div>
+            <a href="/questions/<%=question.id%>">
+                <%= question.title %>
+            </a>
+        </div>
+        <% end %>
 </right>
