@@ -103,19 +103,6 @@ form.quirks {
   width: 200px;
 }
 
-.question-summary {
-	overflow: hidden;
-	padding: 15px 0;
-	float: left;
-	width: 728px;
-	border-bottom: 1px solid #eff0f1
-}
-
-.question-and-answer {
-  display: inline-block;
-  vertical-align: top;
-  width: calc(100% - 5em);
-}
 
 .votes {
         display: inline-block;
