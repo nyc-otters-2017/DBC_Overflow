@@ -1,3 +1,15 @@
+body {
+  font-size: 1em;
+}
+
+a {
+  font-size: 1em;
+  color: #00796b;
+}
+main {
+  flex: 1 0 auto;
+}
+
 .container {
   margin: 20px auto;
   width: 800px;
@@ -66,18 +78,15 @@ form.quirks {
 
 .label {
   font-weight: bold;
-  float: left; 
+  float: left;
   text-align: right;
   margin-right: 20px;
   width: 200px;
 }
-
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-main {
-  flex: 1 0 auto;
+.question-summary {
+	overflow: hidden;
+	padding: 15px 0;
+	float: left;
+	width: 728px;
+	border-bottom: 1px solid #eff0f1
 }
