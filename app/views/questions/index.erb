@@ -1,27 +1,14 @@
-<header>
-  <h1>All Questions</h1>
-</header>
+<h1>All Questions</h1>
 
-
-<ul class="collection">
-  <%@questions.each do |question| %>
-  <li class="collection-item">
-    <a href="/questions/<%=question.id%>"><li> <%= question.title %> </li></a>
-
-
-<form class="upvote" action="/questions/<%=question.id%>/upvote" method="post">
-  <button type="submit" name="thumbsup"><i class="tiny material-icons">thumb_up</i></button>
-  <input type="hidden" name="question_id" value="<%=question.id%>">
-</form>
-
-<form class="downvote" action="/questions/<%=question.id%>/downvote" method="post">
-  <button type="submit" name="thumbsup"><i class="tiny material-icons">thumb_down</i></button>
-  <input type="hidden" name="question_id" value="<%=question.id%>">
-</form>
-
-
-
-    [ <%=question.get_total_votes%> Votes ]
-    <% end %>
-  </li>
-</ul>
+<right>
+<%@questions.each do |question| %>
+<div class="question" >
+  <div class="votes" >
+    <div class="upvote" @click="vote('up', question)">votes up</div>
+    <div class="number-of-votes"> <%=question.get_total_votes%> </div>
+    <div class="downvote" @click="vote('down', question)">votes down</div>
+  </div>
+  <a href="/questions/<%=question.id%>"> <%= question.title %> </a>
+</div>
+<% end %>
+</right>
