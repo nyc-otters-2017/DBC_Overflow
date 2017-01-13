@@ -1,3 +1,4 @@
+
 body {
   font-size: 1em;
 }
@@ -6,12 +7,30 @@ a {
   font-size: 1em;
   color: #00796b;
 }
-main {
-  flex: 1 0 auto;
+
+
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.Site-content {
+  flex: 1;
+
 }
 
 .container {
   margin: 20px auto;
+  width: 800px;
+  padding: 0px 20px 20px 20px;
+}
+
+#remove-margin {
+  margin: 5px;
+}
+
+.container{
   width: 800px;
   padding: 0px 20px 20px 20px;
 }
@@ -83,6 +102,7 @@ form.quirks {
   margin-right: 20px;
   width: 200px;
 }
+
 .question-summary {
 	overflow: hidden;
 	padding: 15px 0;
@@ -90,3 +110,4 @@ form.quirks {
 	width: 728px;
 	border-bottom: 1px solid #eff0f1
 }
+
