@@ -23,6 +23,24 @@ post '/questions' do
     end
   end
 
+get '/questions/:question_id/comments/new' do
+  @question_answer = Question.find(params[:question_id])
+  erb :'comments/new'
+
+end
+
+post '/questions/:question_id/comments' do
+
+  @question_answer = Question.find(params["question_id"].to_i)
+  @comment = @question_answer.comments.new(params[:comment])
+  if @comment.save
+    redirect "/questions/#{@question_answer.id}"
+  else
+    erb :'comments/new' #show new comments view again(potentially displaying errors)
+  end
+
+end
+
 get '/questions/:id' do
   @question = Question.find(params[:id])
   @question.answers.each do |answer|
