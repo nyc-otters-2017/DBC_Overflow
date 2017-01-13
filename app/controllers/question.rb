@@ -50,6 +50,7 @@ end
 post "/questions/:id/downvote" do
   @question = Question.find(params["question_id"])
   @question.votes.create(up_or_down: -1)
+  redirect "/questions"
 end
 
 get '/questions/:id' do
