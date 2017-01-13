@@ -1,7 +1,14 @@
 <div class="container">
-  <label for="">Question: <h1>TOTAL COUNT:<%=@question.get_total_votes%> <%= @question.title %></h1></label>
-  <label for="">Question detail:<p><%= @question.body_question %> </p></label>
-
+  <br>
+  <label for="">Question:</label><h1><%= @question.title %></h1>
+  <label for="">More details:</label>
+  <br>
+  <%= @question.body_question %>
+  <br><br>
+  <small>[<%=@question.get_total_votes%> Votes]</small>
+  <br>
+  <br>
+  <a href="/questions/<%= @question.id %>/answers/new">Post An Answer</a>
   <ul>
     <% @question.comments.each do |comment| %>
       <li><label for="">Question comments:  <%= comment.body_comment %> </label></li>
@@ -9,15 +16,16 @@
   </ul>
 </div>
 
-
-<a href="/questions/<%= @question.id %>/answers/new">Post An Answer</a>
-
 <% if @question.answers.any? %>
   <div class="container">
+    <h1>All Answers</h1>
     <% @question.answers.each do |answer| %>
-    <div class="">TOTAL COUNT<%= answer.get_total_votes %></div>
-    <label for="">Answer: </label><h4><%= answer.body_answer %></h4><br>
+    <br>
+    <label for="">Answer: </label>
+    <br>
+    <%= answer.body_answer %><br>
+    <small>[<%= answer.get_total_votes %> Votes]</small>
+    <br>
     <% end %>
   </div>
 <% end %>
-

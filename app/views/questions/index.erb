@@ -3,7 +3,18 @@
 </header>
 
 
-<div class="">
+<ul class="collection">
+  <%@questions.each do |question| %>
+  <li class="collection-item">
+    <a href="/questions/<%=question.id%>"><li> <%= question.title %> </li></a>
+    <i class="tiny material-icons">thumb_up</i>
+    <i class="tiny material-icons">thumb_down</i>
+    [ <%=question.get_total_votes%> Votes ]
+    <% end %>
+  </li>
+</ul>
+
+<!-- <div class="">
   <ul>
     <%@questions.each do |question| %>
     <%=question.get_total_votes%> |
@@ -12,4 +23,4 @@
     <a href="/questions/<%=question.id%>"><li> <%= question.title %> </li></a>
     <% end %>
   </ul>
-</div>
+</div> -->
