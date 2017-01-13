@@ -8,7 +8,7 @@ class Answer < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   def get_total_votes
-    self.total_votes = self.votes.sum(:up_or_down)
+    self.votes.sum(:up_or_down)
   end
 
 end
