@@ -42,13 +42,12 @@ Comment.delete_all
     User.all.sample.questions.create!(
       title: "#{Faker::ChuckNorris.fact}",
       body_question: "Why is/does #{Faker::ChuckNorris.fact} a true fact?",
-      total_votes: 0
       )
   end
 
   30.times do
     Question.all.sample.answers.create!(
-      body_answer: Faker::Hacker.say_something_smart, total_votes: 0
+      body_answer: Faker::Hacker.say_something_smart
       )
     end
 
