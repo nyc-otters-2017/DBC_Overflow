@@ -41,6 +41,18 @@ post '/questions/:question_id/comments' do
 
 end
 
+post "/questions/:id/upvote" do
+  @question = Question.find(params["question_id"])
+  @question.votes.create(up_or_down: 1)
+  redirect "/questions"
+end
+
+post "/questions/:id/downvote" do
+  @question = Question.find(params["question_id"])
+  @question.votes.create(up_or_down: -1)
+  redirect "/questions"
+end
+
 get '/questions/:id' do
   @question = Question.find(params[:id])
   @question.answers.each do |answer|
@@ -70,5 +82,5 @@ post "/questions/:id/answers" do
     @errors = @answer.errors.full_messages
     erb :'answers/new'
   end
-
 end
+
