@@ -7,7 +7,13 @@
                 <div class="upvote" @click="vote('up', question)">
 
                     <form class="upvote" action="/questions/<%=question.id%>/upvote" method="post">
-                        <button type="submit" name="thumbsup"><i class="tiny material-icons">thumb_up</i></button>
+                        <button type="submit" name="thumbsup">
+                          <a href="#" class="tooltip"><img src="/gif/up.png" alt="Up!" border="0">
+                            <span>
+                                <img src ="/gif/sam.gif" style="float:center;" />
+                            </span>
+                            </a>
+                        </button>
                         <input type="hidden" name="question_id" value="<%=question.id%>">
                     </form>
 
@@ -17,7 +23,13 @@
                 </div>
                 <div class="downvote" @click="vote('down', question)">
                     <form class="downvote" action="/questions/<%=question.id%>/downvote" method="post">
-                        <button type="submit" name="thumbsup"><i class="tiny material-icons">thumb_down</i></button>
+                        <button type="submit" name="thumbsdown" >
+                          <a href="#" class="tooltip"><img src="/gif/down.png" alt="Up!" border="0">
+                            <span>
+                                <img src ="/gif/kane.gif" style="float:center;" />
+                            </span>
+                            </a>
+                        </button>
                         <input type="hidden" name="question_id" value="<%=question.id%>">
                     </form>
                 </div>
@@ -28,3 +40,29 @@
         </div>
         <% end %>
 </right>
+
+<!-- width="42" height="42" -->
+
+
+
+<!--First tooltip-->
+<a href="#" class="tooltip">
+Tooltip
+<span>
+    <strong>Most Light-weight Tooltip</strong><br />
+    <img src = "/gif/kane.gif" style="float:right;" />
+    This is the easy-to-use Tooltip driven purely by CSS.
+</span>
+</a>
+
+<!--Second tooltip-->
+<a href="#" class="tooltip">
+<img src="http://pix.iemoji.com/images/emoji/apple/ios-9/256/thinking-face.png" />
+<span>
+    <img src = "/gif/kane.gif" style="float:right;" />
+    <strong>CSS only Tooltip</strong><br />
+    Pure CSS popup tooltips with clean semantic XHTML.
+</span>
+</a>
+
+<!-- end here -->
