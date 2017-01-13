@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 
-  <link rel="stylesheet" href="/css/normalize.css?app=skills">
-  <link rel="stylesheet" href="/css/application.css?app=skills">
+<head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+    <link rel="stylesheet" href="/css/normalize.css?app=skills">
+    <link rel="stylesheet" href="/css/application.css?app=skills">
+
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+
+    <title></title>
 </head>
+
 <body class='Site'>
+
   <nav>
     <div class="nav-wrapper  orange lighten-2" >
       <a href="/" class="brand-logo">DBC Overflow</a>
@@ -48,17 +53,39 @@
               <li><a class="grey-text text-lighten-3" href="/questions">All Questions</a></li>
               <li><a class="grey-text text-lighten-3" href="#!">Top Answers</a></li>
               <li><a class="grey-text text-lighten-3" href="#!">Top Votes</a></li>
+
             </ul>
-              <% end%>
-          </div>
         </div>
-      </div>
-      <div class="footer-copyright">
-        <div class="container" id="remove-margin">
-        © 2017 Capitan Sam
-        <a class="grey-text text-lighten-4 right" href="#!">About Team</a>
-        </div>
-      </div>
-    </footer>
+    </nav>
+    <%= yield %>
+        <main class='Site-content'></main>
+        <footer class="page-footer orange lighten-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">DBC Overflow</h5>
+                        <p class="grey-text text-lighten-4">The website serves as a platform for users to ask and answer questions, and, through membership and active participation, to vote questions and answers up or down and edit questions and answers.</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <% if current_user %>
+                            <h5 class="white-text">Quick Links</h5>
+                            <ul>
+                                <li><a class="grey-text text-lighten-3" href="#!">Home</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">Top Questions</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">Top Answers</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">Top Votes</a></li>
+                            </ul>
+                            <% end%>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container" id="remove-margin">
+                    © 2017 Capitan Sam
+                    <a class="grey-text text-lighten-4 right" href="#!">About Team</a>
+                </div>
+            </div>
+        </footer>
 </body>
+
 </html>
