@@ -1,0 +1,14 @@
+<div class="container">
+
+  <div class="comment_form">
+    <form class="" action="/questions/<%=@question_answer.id%>/comments" method="post">
+
+      <input type="text" name="comment[body_comment]" placeholder="Voice your opinion">
+      <input type="submit" name="" value="Comment">
+
+      <input type="hidden" name="question_id" value="<%=@question_answer.id %>">
+
+    </form>
+  </div>
+
+</div>

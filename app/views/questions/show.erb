@@ -1,7 +1,14 @@
 <div class="container">
   <label for="">Question: <h1>TOTAL COUNT:<%=@question.get_total_votes%> <%= @question.title %></h1></label>
   <label for="">Question detail:<p><%= @question.body_question %> </p></label>
+
+  <ul>
+    <% @question.comments.each do |comment| %>
+      <li><label for="">Question comments:  <%= comment.body_comment %> </label></li>
+    <%end%>
+  </ul>
 </div>
+
 
 <a href="/questions/<%= @question.id %>/answers/new">Post An Answer</a>
 
@@ -13,3 +20,4 @@
     <% end %>
   </div>
 <% end %>
+
