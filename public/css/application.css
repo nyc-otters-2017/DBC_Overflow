@@ -90,13 +90,3 @@ form.quirks {
   margin-right: 20px;
   width: 200px;
 }
-
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-main {
-  flex: 1 0 auto;
-}
