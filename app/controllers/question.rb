@@ -14,7 +14,7 @@ end
 
 post '/questions' do
     binding.pry
-    @user= current_user
+    @user = current_user
     @question = Question.new(params[:question]) #create new question
     @question.user = @user
     if @question.save
