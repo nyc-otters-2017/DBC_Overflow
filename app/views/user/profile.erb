@@ -1,23 +1,16 @@
 <div class="">
 <h1>Welcome <%= current_user.username %> to your profile page</h1>
-
 <div class="questions_asked">
   <h1>Questions Asked</h1>
     <% current_user.questions.each do |question| %>
       <a href="/questions/<%=question.id%>"> <%= question.title %><br><br> </a>
     <% end %>
 </div>
-
 <div class="Answers">
   <h1>Answer's Given</h1>
-
     <% current_user.answers.each do |answer| %>
     <a href="/questions/<%=answer.id%>"> <%= answer.body_answer %><br><br> </a>
   <% end %>
-
-</div>
-<div class="Votes">
-  <h1>Votes</h1>
 </div>
 </div>
 
