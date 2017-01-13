@@ -4,7 +4,7 @@
 <div class="questions_asked">
   <h1>Questions Asked</h1>
     <% current_user.questions.each do |question| %>
-      <%= question.title %> <br><br>
+      <a href="/questions/<%=question.id%>"> <%= question.title %><br><br> </a>
     <% end %>
 </div>
 
