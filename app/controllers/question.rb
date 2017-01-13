@@ -13,7 +13,6 @@ get '/questions/new' do
 end
 
 post '/questions' do
-    binding.pry
     @user = current_user
     @question = Question.new(params[:question]) #create new question
     @question.user = @user
