@@ -4,7 +4,7 @@
 <div class="questions_asked">
   <h1>Questions Asked</h1>
     <% current_user.questions.each do |question| %>
-      <%= question.body_question %>
+      <%= question.title %> <br><br>
     <% end %>
 </div>
 
