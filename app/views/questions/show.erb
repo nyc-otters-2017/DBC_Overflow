@@ -7,6 +7,7 @@
       <li><label for="">Question comments:  <%= comment.body_comment %> </label></li>
     <%end%>
   </ul>
+  <a href="/questions/<%=@question.id%>/comments/new">Add Comment</a>
 </div>
 
 
@@ -15,9 +16,17 @@
 <% if @question.answers.any? %>
   <div class="container">
     <% @question.answers.each do |answer| %>
-    <div class="">TOTAL COUNT<%= answer.get_total_votes %></div>
-    <label for="">Answer: </label><h4><%= answer.body_answer %></h4><br>
+      <div class="">TOTAL COUNT<%= answer.get_total_votes %></div>
+      <label for="">Answer: </label><h4><%= answer.body_answer %></h4><br>
+      <a href="/answers/<%=answer.id%>/comments/new">Add Comment</a>
+
+      <ul>
+        <% if answer.comments.any? %>
+        <% answer.comments.each do |comment| %>
+        <li> <label for=""><%= comment.body_comment %> </label> </li>
+        <% end %>
+      </ul>
+      <% end %>
     <% end %>
   </div>
 <% end %>
-
