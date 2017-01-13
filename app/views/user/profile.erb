@@ -1,6 +1,25 @@
-<!-- <div class="">
+<div class="">
 <h1>Welcome <%= current_user.username %> to your profile page</h1>
-</div> -->
+
+<div class="questions_asked">
+  <h1>Questions Asked</h1>
+
+    <% current_user.questions.each do |question| %>
+      <%= question.body_question %>
+    <% end %>
+</div>
+
+<div class="Answers">
+  <h1>Answer's Given</h1>
+
+</div>
+
+<div class="Votes">
+  <h1>Votes</h1>
+
+</div>
+
+</div>
 
 
 test
