@@ -49,3 +49,26 @@ get '/questions/:id' do
 
   erb :'questions/show'
 end
+
+get '/questions/:question_id/answers/new' do
+
+  @question = Question.find(params[:question_id])
+
+  erb :'answers/new'
+
+end
+
+post "/questions/:id/answers" do
+  @question = Question.find(params[:id])
+  @answer = Answer.new(body_answer: params[:body_answer])
+  @answer.user = current_user
+  @answer.question = @question
+
+  if @answer.save
+    redirect "/questions/#{@question.id}"
+  else
+    @errors = @answer.errors.full_messages
+    erb :'answers/new'
+  end
+
+end

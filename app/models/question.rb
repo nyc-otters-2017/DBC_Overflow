@@ -9,5 +9,4 @@ class Question < ActiveRecord::Base
   def get_total_votes
      self.votes.sum(:up_or_down)
   end
-
 end
