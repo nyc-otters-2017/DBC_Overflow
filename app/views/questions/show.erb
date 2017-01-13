@@ -6,20 +6,21 @@
   <%= @question.body_question %>
   <br><br>
   <small>[<%=@question.get_total_votes%> Votes]</small>
-  <br>
-  <br>
-  <a href="/questions/<%= @question.id %>/answers/new">Post An Answer</a>
+  <br><br>
+  <a href="/questions/<%=@question.id%>/comments/new">Add Comment</a>
   <ul>
+    <small>Question comments:</small>
     <% @question.comments.each do |comment| %>
-      <li><label for="">Question comments:  <%= comment.body_comment %> </label></li>
+      <li><label for="">
+         <%= comment.body_comment %> </label></li>
     <%end%>
   </ul>
-  <a href="/questions/<%=@question.id%>/comments/new">Add Comment</a>
 </div>
 
 <% if @question.answers.any? %>
   <div class="container">
     <h1>All Answers</h1>
+      <a href="/questions/<%= @question.id %>/answers/new">Post An Answer</a>
     <% @question.answers.each do |answer| %>
     <br>
     <label for="">Answer: </label>
