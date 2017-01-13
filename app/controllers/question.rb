@@ -42,9 +42,14 @@ post '/questions/:question_id/comments' do
 end
 
 post "/questions/:id/upvote" do
-  @question = Question.find(params["question_id"])
+  # binding.pry
+  @question = Question.find(params[:id])
   @question.votes.create(up_or_down: 1)
-  redirect "/questions"
+  if request.xhr?
+    @question.get_total_votes.to_s
+  else
+    redirect "/questions"
+  end
 end
 
 post "/questions/:id/downvote" do
