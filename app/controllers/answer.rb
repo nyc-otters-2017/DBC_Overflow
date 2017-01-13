@@ -15,3 +15,15 @@ post '/answers/:answer_id/comments' do
   end
 
 end
+
+post '/answers/:answer_id/upvote' do
+  @answer = Answer.find(params[:answer_id])
+  @answer.votes.create(up_or_down: 1)
+    redirect "/questions/#{@answer.question.id}"
+end
+
+post '/answers/:answer_id/downvote' do
+  @answer = Answer.find(params[:answer_id])
+  @answer.votes.create(up_or_down: -1)
+    redirect "/questions/#{@answer.question.id}"
+end

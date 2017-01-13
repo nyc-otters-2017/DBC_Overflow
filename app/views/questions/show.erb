@@ -1,14 +1,16 @@
 <div class="container">
 
-  <form class="contain" action="/questions/<%= @question.id %>/upvote" method="post">
-    <small>[<%=@question.get_total_votes%> Votes]</small>
+  <small>[<%=@question.get_total_votes%> Votes]</small>
+  <form action="/questions/<%=@question.id%>/upvote" method="post">
     <button class="waves-effect waves-teal btn-flat" type="submit" name="button"><i class="tiny material-icons">thumb_up</i></button>
+    <input type="hidden" name="question_id" value="<%=@question.id%>">
   </form>
 
-  <form class="" action="/questions/<%= @question.id %>/downvote" method="post">
+  <form action="/questions/<%=@question.id%>/downvote" method="post">
     <button class="waves-effect waves-teal btn-flat" type="submit" name="button"><i class="tiny material-icons">thumb_down</i></button>
+    <input type="hidden" name="question_id" value="<%=@question.id%>">
   </form>
-  
+
   <br>
   <label for="">Question:</label><h1><%= @question.title %></h1>
   <label for="">More details:</label>
@@ -26,17 +28,31 @@
 </div>
 
 <% if @question.answers.any? %>
-  <div class="container">
-    <h1>All Answers</h1>
-      <a href="/questions/<%= @question.id %>/answers/new">Post An Answer</a>
-    <% @question.answers.each do |answer| %>
-    <br>
-    <label for="">Answer: </label>
-    <br>
-    <%= answer.body_answer %><br>
-    <small>[<%= answer.get_total_votes %> Votes]</small>
-    <br>
+<div class="container">
+  <h1>All Answers</h1>
+    <a href="/questions/<%= @question.id %>/answers/new">Post An Answer</a>
+  <% @question.answers.each do |answer| %>
+  <br>
+  <br>
+  [<%=answer.get_total_votes%> Votes]
 
-    <% end %>
-  </div>
+  <form action="/answers/<%= answer.id %>/upvote" method="post">
+    <button class="waves-effect waves-teal btn-flat" type="submit" name="button"><i class="tiny material-icons">thumb_up</i></button>
+    <input type="hidden" name="answer_id" value="<%=answer.id%>">
+  </form>
+
+  <form action="/answers/<%= answer.id %>/downvote" method="post">
+    <button class="waves-effect waves-teal btn-flat" type="submit" name="button"><i class="tiny material-icons">thumb_down</i></button>
+    <input type="hidden" name="answer_id" value="<%=answer.id%>">
+  </form>
+
+
+  <label for="">Answer: </label>
+  <br>
+  <%= answer.body_answer %><br>
+  <small>[<%= answer.get_total_votes %> Votes]</small>
+  <br>
+
+  <% end %>
+</div>
 <% end %>

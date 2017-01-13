@@ -44,13 +44,13 @@ end
 post "/questions/:id/upvote" do
   @question = Question.find(params["question_id"])
   @question.votes.create(up_or_down: 1)
-  redirect "/questions"
+    redirect "/questions/#{@question.id}"
 end
 
 post "/questions/:id/downvote" do
   @question = Question.find(params["question_id"])
   @question.votes.create(up_or_down: -1)
-  redirect "/questions"
+  redirect "/questions/#{@question.id}"
 end
 
 get '/questions/:id' do
@@ -83,6 +83,3 @@ post "/questions/:id/answers" do
     erb :'answers/new'
   end
 end
-
-
-#######################
