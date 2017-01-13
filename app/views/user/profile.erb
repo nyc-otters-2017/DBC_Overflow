@@ -4,18 +4,15 @@
 <div class="questions_asked">
   <h1>Questions Asked</h1>
     <% current_user.questions.each do |question| %>
-<<<<<<< HEAD
-      <a href="/question/<%questions.id%>"> <%= question.title %><br><br> </a>
-
-=======
       <a href="/questions/<%=question.id%>"> <%= question.title %><br><br> </a>
->>>>>>> e6177240e3aa9e531cb2a01320fa47e3f3cc819a
     <% end %>
 </div>
 
 <div class="Answers">
   <h1>Answer's Given</h1>
-
+    <% current_user.answers.each do |answer| %>
+    <a href="/questions/<%=answer.id%>"> <%= question.title %><br><br> </a>
+  <% end %>
 </div>
 
 <div class="Votes">
