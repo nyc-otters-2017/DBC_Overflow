@@ -3,10 +3,13 @@
   <label for="">Question detail:<p><%= @question.body_question %> </p></label>
 </div>
 
-<div class="container">
-  <% @question.answers.each do |answer| %>
-  <div class="">TOTAL COUNT<%= answer.get_total_votes %></div>
-  <label for="">Answer: </label><h4><%= answer.body_answer %></h4><br>
-  <% end %>
-</div>
-      
+<a href="/questions/<%= @question.id %>/answers/new">Post An Answer</a>
+
+<% if @question.answers.any? %>
+  <div class="container">
+    <% @question.answers.each do |answer| %>
+    <div class="">TOTAL COUNT<%= answer.get_total_votes %></div>
+    <label for="">Answer: </label><h4><%= answer.body_answer %></h4><br>
+    <% end %>
+  </div>
+<% end %>
