@@ -10,17 +10,15 @@
 
 <div class="Answers">
   <h1>Answer's Given</h1>
+
     <% current_user.answers.each do |answer| %>
     <a href="/questions/<%=answer.id%>"> <%= question.title %><br><br> </a>
   <% end %>
-</div>
 
+</div>
 <div class="Votes">
   <h1>Votes</h1>
-
 </div>
-
 </div>
-
 
 test
