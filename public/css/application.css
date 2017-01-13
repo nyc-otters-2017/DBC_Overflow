@@ -111,3 +111,35 @@ form.quirks {
 	border-bottom: 1px solid #eff0f1
 }
 
+.question-and-answer {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 5em);
+}
+
+.votes {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 0.5em 0 0;
+      }
+
+   .question {
+      margin: 0.75em auto;
+      padding: 0.5em;
+      background: $background-gray;
+      box-shadow: $box-shadow;
+      transition: all 0.1s, border 0.25s ease-out;
+
+    }
+
+    .number-of-votes {
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1.25em;
+    }
+
+    .right {
+        position: absolute;
+        right: 0px;
+        padding: 10px;
+    }
