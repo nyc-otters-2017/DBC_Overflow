@@ -130,3 +130,9 @@ form.quirks {
         right: 0px;
         padding: 10px;
     }
+
+    button {
+        background: transparent;
+        border: none !important;
+        font-size:0;
+    }

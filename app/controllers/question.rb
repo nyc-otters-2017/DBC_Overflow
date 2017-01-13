@@ -1,6 +1,6 @@
 get '/questions' do
 
-  @questions = Question.all
+  @questions = Question.all.reverse
   @questions.each do |question|
     question.get_total_votes
   end
