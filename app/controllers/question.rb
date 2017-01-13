@@ -18,6 +18,6 @@ get '/questions/:id' do
   @question.answers.each do |answer|
     answer.get_total_votes
   end
-  
+
   erb :'questions/show'
 end
