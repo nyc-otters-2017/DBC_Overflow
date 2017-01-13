@@ -2,14 +2,27 @@
   <h1>All Questions</h1>
 </header>
 
-
 <div class="">
   <ul>
     <%@questions.each do |question| %>
     <%=question.get_total_votes%> |
-    <a href="# "><i class="tiny material-icons">thumb_up</i></a>
-    <i class="tiny material-icons">thumb_down</i>
+    <form class="upvote" action="/questions/<%=question.id%>/upvote" method="post">
+      <button type="submit" name="thumbsup"><i class="tiny material-icons">thumb_up</i></button>
+      <input type="hidden" name="question_id" value="<%=question.id%>">
+    </form>
+
+    <form class="downvote" action="/questions/<%=question.id%>/downvote" method="post">
+      <button type="submit" name="thumbsup"><i class="tiny material-icons">thumb_down</i></button>
+      <input type="hidden" name="question_id" value="<%=question.id%>">
+    </form>
+
     <a href="/questions/<%=question.id%>"><li> <%= question.title %> </li></a>
+
+
+
+
+
+    [ <%=question.get_total_votes%> Votes ]
     <% end %>
-  </ul>
-</div>
+  </li>
+</ul>

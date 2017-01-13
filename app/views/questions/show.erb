@@ -1,31 +1,42 @@
 <div class="container">
-  <label for="">Question: <h1>TOTAL COUNT:<%=@question.get_total_votes%> <%= @question.title %></h1></label>
-  <label for="">Question detail:<p><%= @question.body_question %> </p></label>
 
+  <form class="contain" action="/questions/<%= @question.id %>/upvote" method="post">
+    <small>[<%=@question.get_total_votes%> Votes]</small>
+    <button class="waves-effect waves-teal btn-flat" type="submit" name="button"><i class="tiny material-icons">thumb_up</i></button>
+  </form>
+
+  <form class="" action="/questions/<%= @question.id %>/downvote" method="post">
+    <button class="waves-effect waves-teal btn-flat" type="submit" name="button"><i class="tiny material-icons">thumb_down</i></button>
+  </form>
+  
+  <br>
+  <label for="">Question:</label><h1><%= @question.title %></h1>
+  <label for="">More details:</label>
+  <br>
+  <%= @question.body_question %>
+  <br><br>
+  <a href="/questions/<%=@question.id%>/comments/new">Add Comment</a>
   <ul>
+    <small>Question comments:</small>
     <% @question.comments.each do |comment| %>
-      <li><label for="">Question comments:  <%= comment.body_comment %> </label></li>
+      <li><label for="">
+         <%= comment.body_comment %> </label></li>
     <%end%>
   </ul>
-  <a href="/questions/<%=@question.id%>/comments/new">Add Comment</a>
 </div>
-
-<a href="/questions/<%= @question.id %>/answers/new">Post An Answer</a>
 
 <% if @question.answers.any? %>
   <div class="container">
+    <h1>All Answers</h1>
+      <a href="/questions/<%= @question.id %>/answers/new">Post An Answer</a>
     <% @question.answers.each do |answer| %>
-      <div class="">TOTAL COUNT<%= answer.get_total_votes %></div>
-      <label for="">Answer: </label><h4><%= answer.body_answer %></h4><br>
-      <a href="/answers/<%=answer.id%>/comments/new">Add Comment</a>
+    <br>
+    <label for="">Answer: </label>
+    <br>
+    <%= answer.body_answer %><br>
+    <small>[<%= answer.get_total_votes %> Votes]</small>
+    <br>
 
-      <ul>
-        <% if answer.comments.any? %>
-        <% answer.comments.each do |comment| %>
-        <li> <label for=""><%= comment.body_comment %> </label> </li>
-        <% end %>
-      </ul>
-      <% end %>
     <% end %>
   </div>
 <% end %>
