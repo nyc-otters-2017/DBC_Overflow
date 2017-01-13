@@ -14,6 +14,7 @@
       <li><label for="">Question comments:  <%= comment.body_comment %> </label></li>
     <%end%>
   </ul>
+  <a href="/questions/<%=@question.id%>/comments/new">Add Comment</a>
 </div>
 
 <% if @question.answers.any? %>
@@ -26,6 +27,7 @@
     <%= answer.body_answer %><br>
     <small>[<%= answer.get_total_votes %> Votes]</small>
     <br>
+
     <% end %>
   </div>
 <% end %>

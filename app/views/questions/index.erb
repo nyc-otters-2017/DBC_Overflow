@@ -18,8 +18,8 @@
   <ul>
     <%@questions.each do |question| %>
     <%=question.get_total_votes%> |
-    <i class="tiny material-icons">thumb_up</i>
-    <i class="tiny material-icons">thumb_down</i>
+    <i class="tiny material-icons" id="up_button">thumb_up</i>
+    <i class="tiny material-icons" >thumb_down</i>
     <a href="/questions/<%=question.id%>"><li> <%= question.title %> </li></a>
     <% end %>
   </ul>
