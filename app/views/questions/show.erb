@@ -1,11 +1,12 @@
 <div class="container">
-  <label for="">Question: <h1>TOTAL COUNT:<%=@question.total_votes%> <%= @question.title %></h1></label>
+  <label for="">Question: <h1>TOTAL COUNT:<%=@question.get_total_votes%> <%= @question.title %></h1></label>
   <label for="">Question detail:<p><%= @question.body_question %> </p></label>
 </div>
 
 <div class="container">
   <% @question.answers.each do |answer| %>
-  <div class="">TOTAL COUNT<%= answer.total_votes %></div>
+  <div class="">TOTAL COUNT<%= answer.get_total_votes %></div>
   <label for="">Answer: </label><h4><%= answer.body_answer %></h4><br>
   <% end %>
 </div>
+      
