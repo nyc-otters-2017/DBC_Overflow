@@ -1,8 +1,16 @@
 $(document).ready(function () {
-  $(.upvote).on("submitt", function(e){
+  $(".up_vote").on("submit", function(e){
+    // debugger
     e.preventDefault();
-    console.log("hi")
+    var target = $(e.target).parent().parent().children()[1]
+    var url = $(e.target).attr('action')
+    $.ajax({
+      type: "POST",
+      url: url
+    }).success(function(response) {
+      $(target).text(response);
+    });
+  });
 
 
-  })
 });
