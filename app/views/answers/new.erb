@@ -1,0 +1,20 @@
+<br><br><br>
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>
+
+<center>
+<div class="container">
+  <%# TODO: figure out where data goes %>
+  <form class="" action="/questions/<%= @question.id %>/answers" method="post">
+    <div class="">
+      <label for="body_answer">Description:</label>
+      <input type="text" name="body_answer"  placeholder="Be specific." id='body_question'>
+    </div>
+
+    <input class="waves-effect waves-light btn orange lighten-1" type="submit" name="" value="Post Your Answers">
+  </form>
+</div>
+</center>
