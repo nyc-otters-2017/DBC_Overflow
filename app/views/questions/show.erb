@@ -1,32 +1,67 @@
-<div class="container">
-  <label for="">Question: <h1>TOTAL COUNT:<%=@question.get_total_votes%> <%= @question.title %></h1></label>
-  <label for="">Question detail:<p><%= @question.body_question %> </p></label>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
 
-  <ul>
-    <% @question.comments.each do |comment| %>
-      <li><label for="">Question comments:  <%= comment.body_comment %> </label></li>
-    <%end%>
-  </ul>
-  <a href="/questions/<%=@question.id%>/comments/new">Add Comment</a>
-</div>
-
-
-<a href="/questions/<%= @question.id %>/answers/new">Post An Answer</a>
-
-<% if @question.answers.any? %>
   <div class="container">
-    <% @question.answers.each do |answer| %>
-      <div class="">TOTAL COUNT<%= answer.get_total_votes %></div>
-      <label for="">Answer: </label><h4><%= answer.body_answer %></h4><br>
-      <a href="/answers/<%=answer.id%>/comments/new">Add Comment</a>
+
+		<label for="">TOTAL COUNT: <%=@question.get_total_votes%> </label>
+    <h4><%= @question.title %></h4>
+
+    <label for="">Question detail: </label>
+		<p><%= @question.body_question %></p>
+
+    <div class="answer place">
 
       <ul>
-        <% if answer.comments.any? %>
-        <% answer.comments.each do |comment| %>
-        <li> <label for=""><%= comment.body_comment %> </label> </li>
-        <% end %>
+  			<%@question.comments.each do |comment| %>
+  			<label for="">Question comments:</label>
+          <li><%= comment.body_comment %></li>
+          <form class="" action="/questions/<%=@question.id%>/comments/<%=comment.id%>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" name="question_id" value="<%=@question.id%>">
+            <input type="hidden" name="comment_id" value="<%=comment.id%>">
+            <input type="submit" name="" value="delete">
+          </form>
+        <%end%>
+        <br>
+        <br>
+        <a href="/questions/<%=@question.id%>/comments/new">Add Comment</a>
+
       </ul>
-      <% end %>
-    <% end %>
+
+    </div>
   </div>
-<% end %>
+
+<a href="/questions/<%=@question.id%>/answers/new">Post An Answer</a>
+
+<%if @question.answers.any? %>
+	<div class="container">
+		<%@question.answers.each do |answer| %>
+		<div class="">
+      <label for="">Answer:</label>
+      <p> TOTAL COUNT<%= answer.get_total_votes %></p>
+    </div>
+		<h1><%= answer.body_answer %></h1>
+    <ul>
+      <%if answer.comments.any? %><%answer.comments.each do |comment| %>
+      <li> <%= comment.body_comment %></li>
+      <form class="" action="/questions/<%=@question.id%>/answers/<%=answer.id%>/comments/<%=comment.id%>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" name="question_id" value="<%=@question.id%>">
+        <input type="hidden" name="answer_id" value="<%=answer.id%>">
+        <input type="hidden" name="comment_id" value="<%=comment.id%>">
+        <input type="submit" name="" value="delete">
+      </form>
+      <%end %>
+    </ul>
+    <%end %>
+		<a href="/answers/<%=answer.id%>/comments/new">Add Comment</a>
+    <%end %>
+	</div>
+<%end %>
+
+</body>
+</html>
