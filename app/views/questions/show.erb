@@ -12,7 +12,7 @@
     <small>Question comments:</small>
     <% @question.comments.each do |comment| %>
       <li><label for="">
-         <%= comment.body_comment %> - <%=current_user.username%></label></li>
+         <%= comment.body_comment %> - Author</label></li>
     <%end%>
   </ul>
 </div>
@@ -23,7 +23,7 @@
       <a href="/questions/<%= @question.id %>/answers/new">Post An Answer</a>
     <% @question.answers.each do |answer| %>
     <br>
-    <label for=""><%=current_user.username%>'s Answer: </label>
+    <label for=""> Answer: </label>
     <br>
     <%= answer.body_answer %><br>
     <small>[<%= answer.get_total_votes %> Votes]</small>
