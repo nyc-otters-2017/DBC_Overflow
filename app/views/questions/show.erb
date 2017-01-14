@@ -1,4 +1,3 @@
-<div class="container">
 
 		<label for="">TOTAL COUNT: <%=@question.get_total_votes%> </label>
     <h4><%= @question.title %></h4>
@@ -6,7 +5,6 @@
     <label for="">Question detail: </label>
 		<p><%= @question.body_question %></p>
 
-    <div class="answer place">
 
       <ul>
   			<%@question.comments.each do |comment| %>
@@ -25,14 +23,11 @@
 
       </ul>
 
-    </div>
-
 
 
 <a href="/questions/<%=@question.id%>/answers/new">Post An Answer</a>
 
 <%if @question.answers.any? %>
-	<div class="container">
 		<%@question.answers.each do |answer| %>
 		<div class="">
       <label for="">Answer:</label>
@@ -56,5 +51,4 @@
 		<a href="/answers/<%=answer.id%>/comments/new">Add Comment</a>
     <%end %>
 
-	</div>
 <%end%>
