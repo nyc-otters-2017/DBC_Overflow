@@ -5,11 +5,10 @@
     <label for="">Question detail: </label>
 		<h6><%= @question.body_question %></h6>
 
-
+<label>Question comments:</label>
       <ul>
   			<%@question.comments.each do |comment| %>
-  			<label for="">Question comments:</label>
-          <li><%= comment.body_comment %></li>
+          <small><%= comment.body_comment %></small>
           <form class="question_comment_delete" action="/questions/<%=@question.id%>/comments/<%=comment.id%>" method="post">
             <input type="hidden" name="_method" value="delete">
             <input type="hidden" name="question_id" value="<%=@question.id%>">
@@ -17,27 +16,19 @@
             <input type="submit" name="" value="delete">
           </form>
         <%end%>
-        <br>
-        <br>
-        <a href="/questions/<%=@question.id%>/comments/new">Add Comment</a>
-
+        <a href="/questions/<%=@question.id%>/comments/new">Add Comment</a> | <a href="/questions/<%=@question.id%>/answers/new">Post An Answer</a>
       </ul>
 
-
-
-<a href="/questions/<%=@question.id%>/answers/new">Post An Answer</a>
-
+<h5>Answers</h5>
 <%if @question.answers.any? %>
 		<%@question.answers.each do |answer| %>
 		<div class="">
-      <label for="">Answer:</label>
-      <p> TOTAL COUNT<%= answer.get_total_votes %></p>
     </div>
-		<h1><%= answer.body_answer %></h1>
+		<p><%= answer.body_answer %></p> <label>[<%= answer.get_total_votes %> Votes]</label>
     <ul>
       <%if answer.comments.any? %>
       <%answer.comments.each do |comment| %>
-      <li> <%= comment.body_comment %></li>
+      <small>&nbsp; &nbsp; &rarr; <%= comment.body_comment %></small>
       <form class="question_answer_comment_delete" action="/questions/<%=@question.id%>/answers/<%=answer.id%>/comments/<%=comment.id%>" method="post">
         <input type="hidden" name="_method" value="delete">
         <input type="hidden" name="question_id" value="<%=@question.id%>">
@@ -48,7 +39,7 @@
       <%end %>
       <%end%>
     </ul>
-		<a href="/answers/<%=answer.id%>/comments/new">Add Comment</a>
+		<a href="/answers/<%=answer.id%>/comments/new"><small>Add Comment</small></a>
     <%end %>
 
 <%end%>
