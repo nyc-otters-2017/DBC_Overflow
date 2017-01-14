@@ -7,17 +7,22 @@
 
 <label>Question comments:</label>
       <ul>
-  			<%@question.comments.each do |comment| %>
-          <small><%= comment.body_comment %></small>
+              <%@question.comments.each do |comment| %>
           <form class="question_comment_delete" action="/questions/<%=@question.id%>/comments/<%=comment.id%>" method="post">
             <input type="hidden" name="_method" value="delete">
+
+           <label for="">Question comments:</label>
+            <li><%= comment.body_comment %></li>
             <input type="hidden" name="question_id" value="<%=@question.id%>">
             <input type="hidden" name="comment_id" value="<%=comment.id%>">
             <input type="submit" name="" value="delete">
           </form>
         <%end%>
-        <a href="/questions/<%=@question.id%>/comments/new">Add Comment</a> | <a href="/questions/<%=@question.id%>/answers/new">Post An Answer</a>
-      </ul>
+        <br>
+        <br>
+        <a href="/questions/<%=@question.id%>/comments/new">Add Comment</a>
+
+     </ul>
 
 <h5>Answers</h5>
 <%if @question.answers.any? %>
@@ -26,18 +31,18 @@
     </div>
 		<p><%= answer.body_answer %></p> <label>[<%= answer.get_total_votes %> Votes]</label>
     <ul>
-      <%if answer.comments.any? %>
-      <%answer.comments.each do |comment| %>
-      <small>&nbsp; &nbsp; &rarr; <%= comment.body_comment %></small>
-      <form class="question_answer_comment_delete" action="/questions/<%=@question.id%>/answers/<%=answer.id%>/comments/<%=comment.id%>" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <input type="hidden" name="question_id" value="<%=@question.id%>">
-        <input type="hidden" name="answer_id" value="<%=answer.id%>">
-        <input type="hidden" name="comment_id" value="<%=comment.id%>">
-        <input type="submit" name="" value="delete">
-      </form>
-      <%end %>
-      <%end%>
+          <%if answer.comments.any? %>
+          <%answer.comments.each do |comment| %>
+          <form class="question_answer_comment_delete" action="/questions/<%=@question.id%>/answers/<%=answer.id%>/comments/<%=comment.id%>" method="post">
+            <li> <%= comment.body_comment %></li>
+            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" name="question_id" value="<%=@question.id%>">
+            <input type="hidden" name="answer_id" value="<%=answer.id%>">
+            <input type="hidden" name="comment_id" value="<%=comment.id%>">
+            <input type="submit" name="" value="delete">
+          </form>
+          <%end %>
+          <%end%>
     </ul>
 		<a href="/answers/<%=answer.id%>/comments/new"><small>Add Comment</small></a>
     <%end %>

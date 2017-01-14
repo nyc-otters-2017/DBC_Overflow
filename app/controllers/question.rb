@@ -30,9 +30,13 @@ end
 
 delete '/questions/:question_id/comments/:id' do
   @question = Question.find(params['question_id'])
-  @comment = @question.comments.find(params['comment_id'])
-  @comment.destroy
-  redirect "/questions/#{@question.id}"
+  @comment = @question.comments.find(params['id'])
+  @comment.delete
+  if request.xhr?
+
+ else
+    redirect "/questions/#{@question.id}"
+  end
 
 end
 
@@ -45,11 +49,15 @@ end
 
 delete '/questions/:question_id/answers/:answer_id/comments/:id' do
 
-  @question = Question.find(params['question_id'])
+ @question = Question.find(params['question_id'])
   @answer = @question.answers.find(params['answer_id'])
-  @comment = @answer.comments.find(params['comment_id'])
+  @comment = @answer.comments.find(params['id'])
   @comment.destroy
-  redirect "/questions/#{@question.id}"
+    if request.xhr?
+    else
+      redirect "/questions/#{@question.id}"
+    end
+
 end
 
 post "/questions/:id/upvote" do
