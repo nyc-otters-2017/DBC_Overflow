@@ -6,30 +6,6 @@
             <div class="votes">
                 <div class="upvote">
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <form class="up_vote" action="/questions/<%=question.id%>/upvote" method="post">
-        <button id="upvote" type="submit" name="thumbsup"><i class="tiny material-icons">thumb_up</i></button>
-        <input type="hidden" name="question_id" value="<%=question.id%>">
-      </form>
-
-    </div>
-
-
-    <div class="number-of-votes"> <%=question.get_total_votes%> </div>
-    <div class="downvote" @click="vote('down', question)">
-      <form class="downvote" action="/questions/<%=question.id%>/downvote" method="post">
-        <button type="submit" name="thumbsup"><i class="tiny material-icons">thumb_down</i></button>
-        <input type="hidden" name="question_id" value="<%=question.id%>">
-      </form>
-    </div>
-  </div>
-  <a href="/questions/<%=question.id%>"> <%= question.title %> </a>
-</div>
-<% end %>
-=======
-=======
->>>>>>> bf0e4dc1020c63112b52133afc44d5bcf9e86e86
                     <form class="upvote" action="/questions/<%=question.id%>/upvote" method="post">
                         <button type="submit" name="thumbsup">
                             <a href="#" class="tooltip"><img src="/gif/up.png" alt="Up!" border="0">
@@ -63,8 +39,4 @@
             </a>
         </div>
         <% end %>
-<<<<<<< HEAD
->>>>>>> c449537db87adce1134f9eee6dbb5ed7ba8823eb
-=======
->>>>>>> bf0e4dc1020c63112b52133afc44d5bcf9e86e86
 </right>
