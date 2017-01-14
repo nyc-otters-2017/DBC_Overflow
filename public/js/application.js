@@ -12,5 +12,16 @@ $(document).ready(function () {
     });
   });
 
+  $(.downvote).on("submit", function(e) {
+    e.preventDefault();
+    var targert = $(e.target).parent().parent().children()[1]
+    var url = $(e.target).attr('action')
+    $.ajax({
+      type: "POST",
+      url: url,
+    }).success(function(response) {
+      $(target).text(response);
+    });
+  });
 
 });

@@ -21,6 +21,7 @@
                 <div class="number-of-votes">
                     <%=question.get_total_votes%>
                 </div>
+                
                 <div class="downvote">
                     <form class="downvote" action="/questions/<%=question.id%>/downvote" method="post">
                         <button type="submit" name="thumbsdown">
