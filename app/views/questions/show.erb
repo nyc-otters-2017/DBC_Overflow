@@ -1,12 +1,4 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-
-  <div class="container">
+<div class="container">
 
 		<label for="">TOTAL COUNT: <%=@question.get_total_votes%> </label>
     <h4><%= @question.title %></h4>
@@ -35,40 +27,7 @@
 
     </div>
 
-<div class="container">
-  <br>
-  <label for="">Question:</label><h1><%= @question.title %></h1>
-  <label for="">More details:</label>
-  <br>
-  <%= @question.body_question %>
-  <br><br>
-  <small>[<%=@question.get_total_votes%> Votes]</small>
-  <br><br>
-  <a href="/questions/<%=@question.id%>/comments/new">Add Comment</a>
-  <ul>
-    <small>Question comments:</small>
-    <% @question.comments.each do |comment| %>
-      <li><label for="">
-         <%= comment.body_comment %> - Author</label></li>
-    <%end%>
-  </ul>
-</div>
 
-<% if @question.answers.any? %>
-  <div class="container">
-    <h1>All Answers</h1>
-      <a href="/questions/<%= @question.id %>/answers/new">Post An Answer</a>
-    <% @question.answers.each do |answer| %>
-    <br>
-    <label for=""> Answer: </label>
-    <br>
-    <%= answer.body_answer %><br>
-    <small>[<%= answer.get_total_votes %> Votes]</small>
-    <br>
-
-    <% end %>
-
-  </div>
 
 <a href="/questions/<%=@question.id%>/answers/new">Post An Answer</a>
 
@@ -81,7 +40,8 @@
     </div>
 		<h1><%= answer.body_answer %></h1>
     <ul>
-      <%if answer.comments.any? %><%answer.comments.each do |comment| %>
+      <%if answer.comments.any? %>
+      <%answer.comments.each do |comment| %>
       <li> <%= comment.body_comment %></li>
       <form class="" action="/questions/<%=@question.id%>/answers/<%=answer.id%>/comments/<%=comment.id%>" method="post">
         <input type="hidden" name="_method" value="delete">
@@ -91,12 +51,10 @@
         <input type="submit" name="" value="delete">
       </form>
       <%end %>
+      <%end%>
     </ul>
-    <%end %>
 		<a href="/answers/<%=answer.id%>/comments/new">Add Comment</a>
     <%end %>
-	</div>
-<%end %>
 
-</body>
-</html>
+	</div>
+<%end%>

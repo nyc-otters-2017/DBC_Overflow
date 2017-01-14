@@ -50,6 +50,7 @@ delete '/questions/:question_id/answers/:answer_id/comments/:id' do
   @comment = @answer.comments.find(params['comment_id'])
   @comment.destroy
   redirect "/questions/#{@question.id}"
+end
 
 post "/questions/:id/upvote" do
   # binding.pry
@@ -68,14 +69,6 @@ post "/questions/:id/downvote" do
   redirect "/questions"
 end
 
-get '/questions/:id' do
-  @question = Question.find(params[:id])
-  @question.answers.each do |answer|
-    answer.get_total_votes
-  end
-
-
-end
 
 post '/questions' do
   @user = current_user
