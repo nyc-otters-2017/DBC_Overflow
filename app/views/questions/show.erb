@@ -1,16 +1,16 @@
 
-		<label for="">TOTAL COUNT: <%=@question.get_total_votes%> </label>
     <h4><%= @question.title %></h4>
-
+    <label for="">&nbsp;[<%=@question.get_total_votes%> Votes]</label>
+    <br>
     <label for="">Question detail: </label>
-		<p><%= @question.body_question %></p>
+		<h6><%= @question.body_question %></h6>
 
 
       <ul>
   			<%@question.comments.each do |comment| %>
   			<label for="">Question comments:</label>
           <li><%= comment.body_comment %></li>
-          <form class="" action="/questions/<%=@question.id%>/comments/<%=comment.id%>" method="post">
+          <form class="question_comment_delete" action="/questions/<%=@question.id%>/comments/<%=comment.id%>" method="post">
             <input type="hidden" name="_method" value="delete">
             <input type="hidden" name="question_id" value="<%=@question.id%>">
             <input type="hidden" name="comment_id" value="<%=comment.id%>">
@@ -38,7 +38,7 @@
       <%if answer.comments.any? %>
       <%answer.comments.each do |comment| %>
       <li> <%= comment.body_comment %></li>
-      <form class="" action="/questions/<%=@question.id%>/answers/<%=answer.id%>/comments/<%=comment.id%>" method="post">
+      <form class="question_answer_comment_delete" action="/questions/<%=@question.id%>/answers/<%=answer.id%>/comments/<%=comment.id%>" method="post">
         <input type="hidden" name="_method" value="delete">
         <input type="hidden" name="question_id" value="<%=@question.id%>">
         <input type="hidden" name="answer_id" value="<%=answer.id%>">

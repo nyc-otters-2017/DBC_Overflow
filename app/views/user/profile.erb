@@ -1,9 +1,10 @@
 <div class="">
-    <h1><%= current_user.username %>'s Profile</h1>
+    <h1>&nbsp;<%= current_user.username %>'s Profile</h1>
+    <br>
     <div class="questions_asked">
-        <h4>Questions Asked</h4>
+        <h5>&nbsp;Questions Asked</h5>
         <% current_user.questions.each do |question| %>
-            <a href="/questions/<%=question.id%>">
+            &nbsp;<a href="/questions/<%=question.id%>">
                 <%= question.title %>
                     <br>
                     <br> </a>
@@ -11,9 +12,9 @@
     </div>
 
     <div class="Answers">
-        <h4>Answer's Given</h4>
+        <h5>&nbsp;Answer's Given</h5>
         <% current_user.answers.each do |answer| %>
-            <a href="/questions/<%=answer.id%>">
+            &nbsp;<a href="/questions/<%=answer.id%>">
                 <%= answer.body_answer %>
                     <br>
                     <br> </a>

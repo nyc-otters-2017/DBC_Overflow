@@ -1,6 +1,7 @@
  <h1>	&nbsp; All Questions</h1>
 
 <right>
+  <div class"container">
     <%@questions.each do |question| %>
         <div class="question">
             <div class="votes">
@@ -21,7 +22,7 @@
                 <div class="number-of-votes">
                     <%=question.get_total_votes%>
                 </div>
-                
+
                 <div class="downvote">
                     <form class="downvote" action="/questions/<%=question.id%>/downvote" method="post">
                         <button type="submit" name="thumbsdown">
@@ -41,3 +42,4 @@
         </div>
         <% end %>
 </right>
+</div>
