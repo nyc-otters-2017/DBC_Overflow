@@ -1,6 +1,6 @@
 get '/questions' do
 
-  @questions = Question.all
+  @questions = Question.all.reverse
   @questions.each do |question|
     question.get_total_votes
   end
@@ -42,6 +42,7 @@ get '/questions/:question_id/answers/new' do
 
 end
 
+
 delete '/questions/:question_id/answers/:answer_id/comments/:id' do
 
   @question = Question.find(params['question_id'])
@@ -49,6 +50,30 @@ delete '/questions/:question_id/answers/:answer_id/comments/:id' do
   @comment = @answer.comments.find(params['comment_id'])
   @comment.destroy
   redirect "/questions/#{@question.id}"
+
+post "/questions/:id/upvote" do
+  # binding.pry
+  @question = Question.find(params[:id])
+  @question.votes.create(up_or_down: 1)
+  if request.xhr?
+    @question.get_total_votes.to_s
+  else
+    redirect "/questions"
+  end
+end
+
+post "/questions/:id/downvote" do
+  @question = Question.find(params["question_id"])
+  @question.votes.create(up_or_down: -1)
+  redirect "/questions"
+end
+
+get '/questions/:id' do
+  @question = Question.find(params[:id])
+  @question.answers.each do |answer|
+    answer.get_total_votes
+  end
+
 
 end
 
@@ -88,5 +113,4 @@ post "/questions/:id/answers" do
     @errors = @answer.errors.full_messages
     erb :'answers/new'
   end
-
 end

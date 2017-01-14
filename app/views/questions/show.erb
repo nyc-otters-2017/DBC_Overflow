@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +34,40 @@
       </ul>
 
     </div>
+
+<div class="container">
+  <br>
+  <label for="">Question:</label><h1><%= @question.title %></h1>
+  <label for="">More details:</label>
+  <br>
+  <%= @question.body_question %>
+  <br><br>
+  <small>[<%=@question.get_total_votes%> Votes]</small>
+  <br><br>
+  <a href="/questions/<%=@question.id%>/comments/new">Add Comment</a>
+  <ul>
+    <small>Question comments:</small>
+    <% @question.comments.each do |comment| %>
+      <li><label for="">
+         <%= comment.body_comment %> - Author</label></li>
+    <%end%>
+  </ul>
+</div>
+
+<% if @question.answers.any? %>
+  <div class="container">
+    <h1>All Answers</h1>
+      <a href="/questions/<%= @question.id %>/answers/new">Post An Answer</a>
+    <% @question.answers.each do |answer| %>
+    <br>
+    <label for=""> Answer: </label>
+    <br>
+    <%= answer.body_answer %><br>
+    <small>[<%= answer.get_total_votes %> Votes]</small>
+    <br>
+
+    <% end %>
+
   </div>
 
 <a href="/questions/<%=@question.id%>/answers/new">Post An Answer</a>
