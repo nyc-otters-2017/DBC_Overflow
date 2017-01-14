@@ -1,5 +1,6 @@
 body {
     font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
 }
 
 a {
@@ -7,11 +8,33 @@ a {
     color: #00796b;
 }
 
+h1{
+  font-family: 'Montserrat', sans-serif;
+}
+
+h2{
+  font-family: 'Montserrat', sans-serif;
+}
+
+h3{
+  font-family: 'Montserrat', sans-serif;
+}
+
+h4{
+  font-family: 'Montserrat', sans-serif;
+}
+
+h5{
+  font-family: 'Montserrat', sans-serif;
+}
+
 a.q {
     font-size: 1.5em;
 }
 
 .Site {
+    font-size: 2em;
+    font-family: 'Open Sans', sans-serif;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
