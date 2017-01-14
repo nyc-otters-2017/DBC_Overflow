@@ -1,3 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+  <div class="container">
+
+		<label for="">TOTAL COUNT: <%=@question.get_total_votes%> </label>
+    <h4><%= @question.title %></h4>
+
+    <label for="">Question detail: </label>
+		<p><%= @question.body_question %></p>
+
+    <div class="answer place">
+
+      <ul>
+  			<%@question.comments.each do |comment| %>
+  			<label for="">Question comments:</label>
+          <li><%= comment.body_comment %></li>
+          <form class="" action="/questions/<%=@question.id%>/comments/<%=comment.id%>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" name="question_id" value="<%=@question.id%>">
+            <input type="hidden" name="comment_id" value="<%=comment.id%>">
+            <input type="submit" name="" value="delete">
+          </form>
+        <%end%>
+        <br>
+        <br>
+        <a href="/questions/<%=@question.id%>/comments/new">Add Comment</a>
+
+      </ul>
+
+    </div>
+
 <div class="container">
   <br>
   <label for="">Question:</label><h1><%= @question.title %></h1>
@@ -30,5 +67,36 @@
     <br>
 
     <% end %>
+
   </div>
-<% end %>
+
+<a href="/questions/<%=@question.id%>/answers/new">Post An Answer</a>
+
+<%if @question.answers.any? %>
+	<div class="container">
+		<%@question.answers.each do |answer| %>
+		<div class="">
+      <label for="">Answer:</label>
+      <p> TOTAL COUNT<%= answer.get_total_votes %></p>
+    </div>
+		<h1><%= answer.body_answer %></h1>
+    <ul>
+      <%if answer.comments.any? %><%answer.comments.each do |comment| %>
+      <li> <%= comment.body_comment %></li>
+      <form class="" action="/questions/<%=@question.id%>/answers/<%=answer.id%>/comments/<%=comment.id%>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" name="question_id" value="<%=@question.id%>">
+        <input type="hidden" name="answer_id" value="<%=answer.id%>">
+        <input type="hidden" name="comment_id" value="<%=comment.id%>">
+        <input type="submit" name="" value="delete">
+      </form>
+      <%end %>
+    </ul>
+    <%end %>
+		<a href="/answers/<%=answer.id%>/comments/new">Add Comment</a>
+    <%end %>
+	</div>
+<%end %>
+
+</body>
+</html>
