@@ -2,7 +2,7 @@
     <h1>&nbsp;<%= current_user.username %>'s Profile</h1>
     <br>
     <div class="questions_asked">
-        <h5>&nbsp;Questions Asked</h5>
+        <h5>&nbsp; <%= current_user.questions.length %> Questions Asked</h5>
         <% current_user.questions.each do |question| %>
             &nbsp;<a href="/questions/<%=question.id%>">
                 <%= question.title %>
@@ -12,7 +12,7 @@
     </div>
 
     <div class="Answers">
-        <h5>&nbsp;Answer's Given</h5>
+        <h5>&nbsp; <%= current_user.answers.length %> Answer's Given</h5>
         <% current_user.answers.each do |answer| %>
             &nbsp;<a href="/questions/<%=answer.id%>">
                 <%= answer.body_answer %>

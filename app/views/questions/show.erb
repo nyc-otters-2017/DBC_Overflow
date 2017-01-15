@@ -1,6 +1,6 @@
 
     <h4><%= @question.title %></h4>
-    <label for="">&nbsp;[<%=@question.get_total_votes%> Votes]</label>
+    <small> Aasked by <%= @question.user.username %>  [<%=@question.get_total_votes%> Votes]</small>
     <br>
     <label for="">Question detail: </label>
 		<h6><%= @question.body_question %></h6>
@@ -24,7 +24,8 @@
 		<%@question.answers.each do |answer| %>
 		<div class="">
     </div>
-		<p><%= answer.body_answer %></p> <label>[<%= answer.get_total_votes %> Votes]</label>
+		<p><%= answer.body_answer %></p> <label align="right">[<%= answer.get_total_votes %> Votes] &nbsp;</label>
+    <label align="right"> Answer by <%= answer.user.username %> &nbsp;</label>
     <ul>
       <%if answer.comments.any? %>
       <%answer.comments.each do |comment| %>

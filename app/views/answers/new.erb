@@ -1,16 +1,11 @@
 <br><br><br>
-<% if @errors %>
-  <% @errors.each do |error| %>
-    <p><%= error %></p>
-  <% end %>
-<% end %>
 
 <center>
 <div class="container">
   <%# TODO: figure out where data goes %>
   <form class="" action="/questions/<%= @question.id %>/answers" method="post">
     <div class="">
-      <label for="body_answer">Description:</label>
+      <label for="body_answer">Type your answer:</label>
       <input type="text" name="body_answer"  placeholder="Be specific." id='body_question'>
     </div>
 
