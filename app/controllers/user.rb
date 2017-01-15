@@ -8,6 +8,7 @@ post '/user' do
     session[:user_id] = @user.id
     redirect '/'
   else
+    @errors = @user.errors.full_messages
     erb :'user/new' # show new user view again(potentially displaying errors)
   end
 end
