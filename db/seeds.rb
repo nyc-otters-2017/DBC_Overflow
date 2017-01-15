@@ -38,14 +38,14 @@ Comment.delete_all
       )
   end
 
-  30.times do
+  10.times do
     User.all.sample.questions.create!(
       title: "#{Faker::ChuckNorris.fact}",
       body_question: "Why is/does #{Faker::ChuckNorris.fact} a true fact?",
       )
   end
 
-  30.times do
+  10.times do
     Question.all.sample.answers.create!(
       body_answer: Faker::Hacker.say_something_smart
       )
@@ -53,23 +53,23 @@ Comment.delete_all
 
   10.times do
     Question.all.sample.comments.create!(
-    body_comment: "Jeremy was here; for question"
+    body_comment: "Jeremy was here for question"
     )
   end
 
   10.times do
     Answer.all.sample.comments.create!(
-    body_comment: "Jeremy was here; for answer"
+    body_comment: "Jeremy was here for answer"
     )
   end
 
-  30.times do
+  10.times do
     Question.all.sample.votes.create!(
       :up_or_down      => fake_vote
     )
   end
 
-  30.times do
+  10.times do
     Answer.all.sample.votes.create!(
       :up_or_down      => fake_vote
     )
