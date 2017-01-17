@@ -24,11 +24,15 @@ end
 
 get '/questions/:question_id/comments/new' do
   @question_answer = Question.find(params[:question_id])
-  erb :'comments/new'
-
+  if request.xhr?
+    erb :'comments/new'
+  else
+    erb :'comments/new'
+  end
 end
 
-delete '/questions/:question_id/comments/:id' do
+delete '/questions/:question_id/comments/:comment_id' do
+  # binding.pry
   @question = Question.find(params['question_id'])
   @comment = @question.comments.find(params['comment_id'])
   @comment.destroy
@@ -85,8 +89,9 @@ end
 post '/questions/:question_id/comments' do
   @question_answer = Question.find(params["question_id"].to_i)
   @comment = @question_answer.comments.new(params[:comment])
+  # binding.pry
   if @comment.save
-    redirect "/questions/#{@question_answer.id}"
+    request.xhr? ? (erb :'comments/_one_comment', layout:false) : (redirect "/questions/#{@question_answer.id}")
   else
     erb :'comments/new' #show new comments view again(potentially displaying errors)
   end

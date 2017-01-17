@@ -1,18 +1,13 @@
 
-<div class="container">
-
-  <div class="comment_form">
+<div>
 <% if @question_answer.class == Question %>
-    <form class="" action="/questions/<%=@question_answer.id%>/comments" method="post">
+    <form class="comment_form" action="/questions/<%=@question_answer.id%>/comments" method="post">
 <% else @question_answer.class == Answer %>
-    <form class="" action="/answers/<%=@question_answer.id%>/comments" method="post">
+    <form class="comment_form" action="/answers/<%=@question_answer.id%>/comments" method="post">
 <% end %>
       <input type="text" name="comment[body_comment]" placeholder="Voice your opinion">
-      <input type="submit" name="" value="Comment">
+      <input class='comment_submit' type="submit" name="" value="Comment">
 
       <input type="hidden" name="question_id" value="<%=@question_answer.id %>">
-
     </form>
-  </div>
-
 </div>

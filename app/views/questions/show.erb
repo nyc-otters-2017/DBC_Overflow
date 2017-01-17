@@ -7,16 +7,21 @@
 
 <label>Question comments:</label>
       <ul>
+        <div class="all_comments_for_question">
   			<%@question.comments.each do |comment| %>
-          <small><%= comment.body_comment %></small>
-          <form class="question_comment_delete" action="/questions/<%=@question.id%>/comments/<%=comment.id%>" method="post">
-            <input type="hidden" name="_method" value="delete">
-            <input type="hidden" name="question_id" value="<%=@question.id%>">
-            <input type="hidden" name="comment_id" value="<%=comment.id%>">
-            <input type="submit" name="" value="delete">
-          </form>
+
+          <div class="one_comment">
+            <small><%= comment.body_comment %></small>
+            <form class="question_comment_delete" action="/questions/<%=@question.id%>/comments/<%=comment.id%>" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <input type="hidden" name="question_id" value="<%=@question.id%>">
+              <input type="hidden" name="comment_id" value="<%=comment.id%>">
+              <input type="submit" name="" value="delete">
+            </form>
+          </div>
+        </div>
         <%end%>
-        <a href="/questions/<%=@question.id%>/comments/new">Add Comment</a> | <a href="/questions/<%=@question.id%>/answers/new">Post An Answer</a>
+        <a class='question_add_comment' href="/questions/<%=@question.id%>/comments/new">Add Comment</a> | <a class='question_add_answer' href="/questions/<%=@question.id%>/answers/new">Post An Answer</a>
       </ul>
 
 <h5>Answers</h5>
